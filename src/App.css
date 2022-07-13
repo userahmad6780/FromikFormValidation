@@ -3,9 +3,44 @@
   margin: 0;
   box-sizing: border-box;
 }
-body{
+body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(236, 236, 236);
+}
+/* ----------------------- common css ----------------------------- */
+.border_sm{
+  border-radius: 18px;
+}
+/* ----------------------- valid css ----------------------------- */
+.form {
+  /* background-color: aquamarine; */
+  background-color: rgb(247, 247, 247);
+  border: 2px solid rgb(226, 223, 223);
+  padding: 50px 50px;
+}
+input {
+  width: 100%;
+  border: 1px solid rgb(226, 223, 223);
+  padding: 10px;
+  margin-bottom: 1rem;
+  outline: none;
+}
+input:hover,
+input:active {
+  outline: none !important;
+  border: 1px solid rgb(226, 223, 223) !important;
+}
+.btn.formBtn{
+  border: 1px solid rgb(48, 221, 48);
+  background-color: rgb(48, 221, 48);
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  padding: 10px 50px;
+}
+.btn.formBtn:hover{
+  background-color: rgb(40, 177, 40);
 }

@@ -3,7 +3,9 @@ import { pages } from './AppView/index';
 
 function App() {
   return (
-    <pages.NightForm/>
+    <div className="App">
+    <pages.FormikContainer/>
+    </div>
   );
 }
 

@@ -1,56 +1,52 @@
-import { useFormik } from "formik";
 import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import ErrorMsg from "../../components/ErrorMsg";
+
 const initialValues = {
   firstName: "",
   lastName: "",
 };
+const validationSchema = Yup.object({
+  firstName: Yup.string().required("Please enter first name"),
+  lastName: Yup.string().required("Please enter last name"),
+});
 const onSubmit = (values) => {
   console.log("values", values);
 };
 
 function FormikForm() {
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validate: (values) => {
-      let errors = {};
-      if (!values.firstName) {
-        errors.firstName = "enter first name";
-      }
-      if (!values.lastName) {
-        errors.lastName = "enter last name";
-      }
-      return errors;
-    },
-  });
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
-        <input
-          name="firstName"
-          type="text"
-          placeholder="Enter Your Name"
-          value={formik.firstName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        {formik.errors.firstName &&
-          formik.touched.firstName &&
-          formik.errors.firstName}
-        <input
-          name="lastName"
-          type="text"
-          placeholder="Enter Your last Name"
-          value={formik.lastName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        {formik.errors.lastName &&
-          formik.touched.lastName &&
-          formik.errors.lastName}
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    >
+      {(formik) => {
+        console.log("formik props", formik)
+        return (
+          <Form className="form border_sm m-auto">
+            <Field
+              name="firstName"
+              type="text"
+              placeholder="Enter Your Name"
+              className="border_sm"
+            />
+            <ErrorMessage name="firstName" component={ErrorMsg} />
+            <Field
+              name="lastName"
+              type="text"
+              placeholder="Enter Your last Name"
+              className="border_sm"
+            />
+            <ErrorMessage name="lastName" component={ErrorMsg} />
+            <button className="border_sm btn formBtn" type="submit">
+              Submit
+            </button>
+          </Form>
+        );
+      }}
+    </Formik>
   );
 }
 

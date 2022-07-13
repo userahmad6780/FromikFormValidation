@@ -1,8 +1,8 @@
 import Login from "./Auth/Login";
 import FormikForm from "./RormikForm";
-import NightForm from "./Night";
+import FormikContainer from './../ReuseableFormikForm/FormikContainer';
 export const pages = {
   Login,
   FormikForm,
-  NightForm,
+  FormikContainer,
 };
